@@ -1,12 +1,15 @@
 import { prisma } from "../database";
-import type { newUser, loginUser } from "@/models";
+import type { newUser } from "@/models";
 
 export const signup = (data: newUser) => {
   return prisma.user.create({ data });
 };
 
-export const signin = (data: loginUser) => {
-  return prisma.user.findUnique({
-    where: { email: data.email },
-  });
+export const getUserByEmail = (email: string) => {
+  return prisma.user.findUnique({ where: { email } });
 };
+
+export const sessionToken = (userId: number, token: string) => {
+  return prisma.session.create({ data: { userId, token } });
+};
+

@@ -5,8 +5,8 @@ import { CustomError } from "../models";
 
 export const signup = async (req: Request, res: Response) => {
   try {
-    await service.signup();
-    res.status(httpStatus.CREATED).json("Usuário criado com sucesso");
+    await service.signup(req.body);
+    return res.status(httpStatus.CREATED).json("Usuário criado com sucesso");
   } catch (err) {
     if (err instanceof CustomError) {
       res.status(err.status).send(err.message);
@@ -18,8 +18,8 @@ export const signup = async (req: Request, res: Response) => {
 
 export const signin = async (req: Request, res: Response) => {
   try {
-    await service.signin();
-    res.status(httpStatus.OK).json("Usuário logado com sucesso");
+    const token = await service.signin(req.body);
+    return res.status(httpStatus.OK).json(token);
   } catch (err) {
     if (err instanceof CustomError) {
       res.status(err.status).send(err.message);
