@@ -2,8 +2,8 @@ import { NextFunction, Response } from "express";
 import httpStatus from "http-status";
 import * as jwt from "jsonwebtoken";
 
-import { prisma } from "@/database";
-import { AuthenticatedRequest, JWTPayload } from "@/models";
+import { prisma } from "../database";
+import { AuthenticatedRequest, JWTPayload } from "../models";
 
 export const authenticateToken = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
   const authHeader = req.header("Authorization");

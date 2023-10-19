@@ -1,7 +1,7 @@
 import { prisma } from "../database";
-import type { newUser } from "@/models";
+import type { NewUser } from "../models";
 
-export const signup = (data: newUser) => {
+export const signup = (data: NewUser) => {
   return prisma.user.create({ data });
 };
 
