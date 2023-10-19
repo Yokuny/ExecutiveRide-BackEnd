@@ -17,3 +17,20 @@ export interface JWTPayload {
 }
 
 export type AuthenticatedRequest = Request & JWTPayload;
+
+export interface OriginAndDestin {
+  origin: string;
+  destination: string;
+  intermediates: string[];
+}
+
+export interface routeDistanceAndDuration {
+  routeDistance: number;
+  expectedDuration: number;
+  routeInfo: {
+    distance: any;
+    duration: any;
+    startAddress: any;
+    endAddress: any;
+  }[];
+}
