@@ -1,16 +1,14 @@
 export * from "./error.type";
 import { Request } from "express";
 
-export interface newUser {
-  name: string;
+export interface UserAcess {
   email: string;
   password: string;
 }
 
-export interface userAcess {
-  email: string;
-  password: string;
-}
+export type NewUser = UserAcess & {
+  name: string;
+};
 
 export interface JWTPayload {
   userId: number;
@@ -24,7 +22,7 @@ export interface OriginAndDestin {
   intermediates: string[];
 }
 
-export interface routeDistanceAndDuration {
+export interface RouteDistanceAndDuration {
   routeDistance: number;
   expectedDuration: number;
   routeInfo: {

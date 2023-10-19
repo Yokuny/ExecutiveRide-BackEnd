@@ -1,6 +1,6 @@
-import type { routeDistanceAndDuration } from "../models";
+import type { RouteDistanceAndDuration } from "../models";
 
-const getDistanceAndDuration = (response: any): routeDistanceAndDuration => {
+const getDistanceAndDuration = (response: any): RouteDistanceAndDuration => {
   let routeDistance = 0;
   let expectedDuration = 0;
   let routeInfo = [];

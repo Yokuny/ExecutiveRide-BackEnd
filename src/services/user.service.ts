@@ -1,13 +1,13 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import * as respository from "../repositories";
-import { CustomError, newUser, userAcess } from "../models";
+import { CustomError, NewUser, UserAcess } from "../models";
 
 const getUserByEmail = async (email: string) => {
   return await respository.getUserByEmail(email);
 };
 
-export const signup = async (data: newUser) => {
+export const signup = async (data: NewUser) => {
   const user = await getUserByEmail(data.email);
   if (user) throw new CustomError("Usuário já existe", 409);
 
@@ -20,7 +20,7 @@ export const signup = async (data: newUser) => {
   return await respository.signup(newUser);
 };
 
-export const signin = async (data: userAcess) => {
+export const signin = async (data: UserAcess) => {
   const user = await getUserByEmail(data.email);
   if (!user) throw new CustomError("Usuário ou senha incorretos", 409);
 
