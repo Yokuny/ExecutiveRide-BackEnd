@@ -9,6 +9,7 @@ app
   .use(express.json())
   .use(cors())
   .get("/health", (_req: Request, res: Response) => res.send("OK!"))
+  .get("/time", (_req: Request, res: Response) => res.send(new Date()))
   .use("/user", route.userRoute)
   .use("/route", route.routeRoute);
 
